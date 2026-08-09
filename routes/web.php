@@ -1,18 +1,20 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+use App\Http\Controllers\Admin\ProjectController;
+
+
+Route::get('/', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('/projects/{project}', [PortfolioController::class, 'show'])->name('portfolio.projects.show');
+
+
+
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -24,4 +26,32 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        Route::resource('projects', ProjectController::class);
+
+        Route::delete(
+            'projects/{project}/images/{image}',
+            [ProjectController::class, 'deleteImage']
+        )->name('projects.images.delete');
+
+        Route::post(
+            'projects/{project}/images/{image}/primary',
+            [ProjectController::class, 'setPrimaryImage']
+        )->name('projects.images.primary');
+
+        Route::put(
+            'projects/{project}/images/{image}',
+            [ProjectController::class, 'updateImage']
+        )->name('projects.images.update');
+
+
+    });
+
+
+
+require __DIR__ . '/auth.php';
