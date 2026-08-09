@@ -73,4 +73,6 @@ RUN chmod -R 775 \
 # Create storage symlink
 RUN php artisan storage:link || true
 
-EXPOSE 80
+EXPOSE 10000
+
+CMD ["apache2-foreground"]
