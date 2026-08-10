@@ -14,8 +14,6 @@ Route::get('/projects/{project}', [PortfolioController::class, 'show'])->name('p
 
 
 
-
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

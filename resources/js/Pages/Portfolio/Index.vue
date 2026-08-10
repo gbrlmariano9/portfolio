@@ -78,7 +78,7 @@ defineProps({
                     <p
                         class="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-red-500"
                     >
-                        Full Stack Developer <br /> Data Analyst
+                        Full Stack Developer <br /> Business Solutions Analyst
                     </p>
 
                     <h1

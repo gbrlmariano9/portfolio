@@ -21,74 +21,71 @@ function deleteProject(project) {
 <template>
     <Head title="Projects" />
 
-    <div class="min-h-screen bg-gray-100 p-6">
+    <div class="min-h-screen bg-slate-50 p-6">
         <div class="mx-auto max-w-7xl">
-            <!-- Header -->
-            <div class="mb-6 flex items-center justify-between">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-900">Projects</h1>
+            <div class="mb-6 overflow-hidden rounded-[32px] border border-slate-200 bg-white px-6 py-7 shadow-sm">
+                <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-red-600">Projects</p>
+                        <h1 class="mt-3 text-3xl font-semibold tracking-tight text-slate-900">Manage your portfolio projects</h1>
+                        <p class="mt-3 max-w-2xl text-sm leading-6 text-slate-600">Keep your work organized, publish updates, and highlight your best projects.</p>
+                    </div>
 
-                    <p class="mt-1 text-sm text-gray-600">
-                        Manage your portfolio projects.
-                    </p>
+                    <Link
+                        :href="route('admin.projects.create')"
+                        class="inline-flex items-center justify-center rounded-2xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
+                    >
+                        + New Project
+                    </Link>
                 </div>
 
-                <Link
-                    :href="route('admin.projects.create')"
-                    class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
-                >
-                    + New Project
-                </Link>
+                <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                    <div class="rounded-3xl bg-slate-50 p-4">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Total</p>
+                        <p class="mt-3 text-3xl font-semibold text-slate-900">{{ projects.data.length }}</p>
+                    </div>
+                    <div class="rounded-3xl bg-slate-50 p-4">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Published</p>
+                        <p class="mt-3 text-3xl font-semibold text-emerald-700">{{ projects.data.filter((project) => project.status === 'published').length }}</p>
+                    </div>
+                    <div class="rounded-3xl bg-slate-50 p-4">
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Featured</p>
+                        <p class="mt-3 text-3xl font-semibold text-red-700">{{ projects.data.filter((project) => project.featured).length }}</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Projects Table -->
-            <div class="overflow-hidden rounded-xl bg-white shadow">
+            <div class="overflow-hidden rounded-[32px] bg-white shadow-sm">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm">
-                        <thead
-                            class="bg-gray-50 text-xs uppercase text-gray-600"
-                        >
+                    <table class="min-w-full text-left text-sm">
+                        <thead class="bg-slate-50 text-xs uppercase tracking-[0.2em] text-slate-500">
                             <tr>
                                 <th class="px-6 py-4">Title</th>
-
                                 <th class="px-6 py-4">Status</th>
-
                                 <th class="px-6 py-4">Featured</th>
-
                                 <th class="px-6 py-4">Created</th>
-
                                 <th class="px-6 py-4 text-right">Actions</th>
                             </tr>
                         </thead>
 
-                        <tbody class="divide-y divide-gray-200">
+                        <tbody class="divide-y divide-slate-200">
                             <tr
                                 v-for="project in projects.data"
                                 :key="project.id"
-                                class="hover:bg-gray-50"
+                                class="transition hover:bg-slate-50"
                             >
                                 <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-900">
-                                        {{ project.title }}
-                                    </div>
-
-                                    <div class="text-xs text-gray-500">
-                                        {{ project.slug }}
-                                    </div>
+                                    <div class="font-semibold text-slate-900">{{ project.title }}</div>
+                                    <div class="text-xs text-slate-500">{{ project.slug }}</div>
                                 </td>
 
                                 <td class="px-6 py-4">
                                     <span
-                                        class="rounded-full px-3 py-1 text-xs font-semibold"
+                                        class="inline-flex rounded-full px-3 py-1 text-xs font-semibold capitalize ring-1"
                                         :class="{
-                                            'bg-yellow-100 text-yellow-800':
-                                                project.status === 'draft',
-
-                                            'bg-green-100 text-green-800':
-                                                project.status === 'published',
-
-                                            'bg-gray-100 text-gray-800':
-                                                project.status === 'archived',
+                                            'bg-yellow-100 text-yellow-700 ring-yellow-200': project.status === 'draft',
+                                            'bg-emerald-100 text-emerald-700 ring-emerald-200': project.status === 'published',
+                                            'bg-slate-100 text-slate-700 ring-slate-200': project.status === 'archived',
                                         }"
                                     >
                                         {{ project.status }}
@@ -98,42 +95,27 @@ function deleteProject(project) {
                                 <td class="px-6 py-4">
                                     <span
                                         v-if="project.featured"
-                                        class="font-semibold text-red-600"
+                                        class="inline-flex rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700"
                                     >
-                                        Yes
+                                        Featured
                                     </span>
-
-                                    <span v-else class="text-gray-500">
-                                        No
-                                    </span>
+                                    <span v-else class="text-sm text-slate-500">No</span>
                                 </td>
 
-                                <td class="px-6 py-4 text-gray-600">
-                                    {{ project.created_at }}
-                                </td>
+                                <td class="px-6 py-4 text-slate-500">{{ project.created_at }}</td>
 
                                 <td class="px-6 py-4">
-                                    <div class="flex justify-end gap-2">
+                                    <div class="flex flex-wrap justify-end gap-2">
                                         <Link
-                                            :href="
-                                                route(
-                                                    'admin.projects.show',
-                                                    project.id,
-                                                )
-                                            "
-                                            class="rounded-lg border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100"
+                                            :href="route('admin.projects.show', project.id)"
+                                            class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
                                         >
                                             View
                                         </Link>
 
                                         <Link
-                                            :href="
-                                                route(
-                                                    'admin.projects.edit',
-                                                    project.id,
-                                                )
-                                            "
-                                            class="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+                                            :href="route('admin.projects.edit', project.id)"
+                                            class="rounded-full bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
                                         >
                                             Edit
                                         </Link>
@@ -141,7 +123,7 @@ function deleteProject(project) {
                                         <button
                                             type="button"
                                             @click="deleteProject(project)"
-                                            class="rounded-lg bg-red-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-700"
+                                            class="rounded-full bg-red-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-700"
                                         >
                                             Delete
                                         </button>
@@ -149,12 +131,8 @@ function deleteProject(project) {
                                 </td>
                             </tr>
 
-                            <!-- Empty state -->
                             <tr v-if="projects.data.length === 0">
-                                <td
-                                    colspan="5"
-                                    class="px-6 py-12 text-center text-gray-500"
-                                >
+                                <td colspan="5" class="px-6 py-12 text-center text-slate-500">
                                     No projects found.
                                 </td>
                             </tr>
@@ -163,28 +141,21 @@ function deleteProject(project) {
                 </div>
             </div>
 
-            <!-- Pagination -->
-            <div
-                v-if="projects.links.length > 3"
-                class="mt-6 flex flex-wrap gap-2"
-            >
+            <div v-if="projects.links.length > 3" class="mt-6 flex flex-wrap gap-2">
                 <template v-for="link in projects.links" :key="link.label">
                     <Link
                         v-if="link.url"
                         :href="link.url"
-                        class="rounded-lg border px-3 py-2 text-sm"
+                        class="rounded-2xl border px-3 py-2 text-sm"
                         :class="{
-                            'bg-red-600 text-white': link.active,
-
-                            'bg-white text-gray-700 hover:bg-gray-100':
-                                !link.active,
+                            'bg-red-600 text-white border-red-600': link.active,
+                            'bg-white text-slate-700 hover:bg-slate-50': !link.active,
                         }"
                         v-html="link.label"
                     />
-
                     <span
                         v-else
-                        class="rounded-lg border bg-gray-100 px-3 py-2 text-sm text-gray-400"
+                        class="rounded-2xl border bg-slate-100 px-3 py-2 text-sm text-slate-400"
                         v-html="link.label"
                     />
                 </template>
