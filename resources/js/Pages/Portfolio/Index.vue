@@ -114,7 +114,7 @@ defineProps({
                 </div>
 
                 <!-- Hero Profile -->
-                <div class="hidden lg:block">
+                <div class="mx-auto block max-w-sm lg:max-w-md">
                     <div
                         class="relative mx-auto max-w-md overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-red-500/10 via-white/[0.03] to-transparent p-8 shadow-2xl"
                     >
@@ -395,16 +395,15 @@ defineProps({
                         </p>
                     </a>
 
-                    <!-- GitHub -->
+                    <!-- Phone -->
                     <a
-                        href="https://github.com/gbrlmariano9"
-                        target="_blank"
+                        href="tel:+639652174915"
                         class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-red-500/40"
                     >
-                        <p class="text-sm text-slate-400">GitHub</p>
+                        <p class="text-sm text-slate-400">Phone</p>
 
                         <p class="mt-2 font-semibold text-white">
-                            github.com/gbrlmariano9
+                            +63 965 217 4915
                         </p>
                     </a>
 
