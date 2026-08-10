@@ -84,15 +84,16 @@ defineProps({
                     <h1
                         class="max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
                     >
-                        Building digital
-                        <span class="text-red-500">experiences</span>
-                        that work.
+                        Creating
+                        <span class="text-red-500"> scalable software </span>
+                        that solves real problems.
                     </h1>
 
                     <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-                        I build modern web applications, data-driven systems,
-                        and practical digital solutions using technologies such
-                        as Laravel, Vue.js, PHP, MySQL, and more.
+                        Full Stack Developer focused on building reliable web
+                        applications, business systems, and data-driven
+                        solutions using Laravel, Vue.js 3, React, PHP, and
+                        modern database technologies.
                     </p>
 
                     <div class="mt-8 flex flex-wrap gap-4">
@@ -112,26 +113,33 @@ defineProps({
                     </div>
                 </div>
 
-                <!-- Hero visual -->
+                <!-- Hero Profile -->
                 <div class="hidden lg:block">
                     <div
-                        class="relative mx-auto flex aspect-square max-w-md items-center justify-center rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl"
+                        class="relative mx-auto max-w-md overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-red-500/10 via-white/[0.03] to-transparent p-8 shadow-2xl"
                     >
                         <div
-                            class="absolute inset-8 rounded-2xl border border-red-500/20"
+                            class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-red-500/20 blur-3xl"
                         ></div>
 
-                        <div class="text-center">
-                            <div
-                                class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-red-600/10 text-4xl font-bold text-red-500"
-                            >
-                                G
-                            </div>
+                        <div class="relative text-center">
+                            <!-- Replace this image path later -->
+                            <img
+                                src="/images/profile_gab.jpg"
+                                alt="Gabriel Mariano"
+                                class="mx-auto h-56 w-56 rounded-3xl object-cover border border-white/10 shadow-xl"
+                            />
 
-                            <p class="text-xl font-semibold">Gabriel Mariano</p>
+                            <h3 class="mt-6 text-2xl font-bold">
+                                Gabriel Mariano
+                            </h3>
 
-                            <p class="mt-2 text-sm text-slate-400">
-                                Laravel • Vue • Data
+                            <p class="mt-2 text-red-400">
+                                Full Stack Developer
+                            </p>
+
+                            <p class="mt-4 text-sm leading-6 text-slate-400">
+                                Laravel • Vue.js 3 • React • APIs • Databases
                             </p>
                         </div>
                     </div>
@@ -154,50 +162,61 @@ defineProps({
                     <h2
                         class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
                     >
-                        Turning ideas into working systems.
+                        Building solutions that create real business value.
                     </h2>
 
                     <p class="mt-6 text-lg leading-8 text-slate-400">
-                        I enjoy creating applications that solve real-world
-                        problems. My work combines backend development, frontend
-                        interfaces, databases, and data analysis.
+                        I am Gabriel Mariano, a Full Stack Developer
+                        specializing in Laravel and Vue.js 3. I build scalable,
+                        user-friendly web applications focused on performance,
+                        maintainability, and real-world business solutions.
+                        Beyond development, I also contribute in Quality
+                        Assurance and Business Analysis by understanding
+                        requirements, testing systems, and collaborating with
+                        stakeholders to deliver reliable software.
                     </p>
                 </div>
 
                 <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <div
-                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-red-500/40 transition"
                     >
-                        <p class="text-3xl font-bold text-red-500">Laravel</p>
+                        <p class="text-xl font-bold text-red-500">Full Stack</p>
+
                         <p class="mt-2 text-sm text-slate-400">
-                            Backend & APIs
+                            Laravel, Vue.js 3, React, PHP, JavaScript
                         </p>
                     </div>
 
                     <div
-                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-red-500/40 transition"
                     >
-                        <p class="text-3xl font-bold text-red-500">Vue</p>
+                        <p class="text-xl font-bold text-red-500">Backend</p>
+
                         <p class="mt-2 text-sm text-slate-400">
-                            Modern Interfaces
+                            REST API, Authentication, System Architecture
                         </p>
                     </div>
 
                     <div
-                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-red-500/40 transition"
                     >
-                        <p class="text-3xl font-bold text-red-500">MySQL</p>
+                        <p class="text-xl font-bold text-red-500">Database</p>
+
                         <p class="mt-2 text-sm text-slate-400">
-                            Data & Databases
+                            MySQL, SQL Server, PostgreSQL Optimization
                         </p>
                     </div>
 
                     <div
-                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-red-500/40 transition"
                     >
-                        <p class="text-3xl font-bold text-red-500">Data</p>
+                        <p class="text-xl font-bold text-red-500">
+                            QA & Analysis
+                        </p>
+
                         <p class="mt-2 text-sm text-slate-400">
-                            Analysis & Insights
+                            Testing, Requirements, Client Collaboration
                         </p>
                     </div>
                 </div>
@@ -250,10 +269,7 @@ defineProps({
                             class="h-full w-full object-cover"
                         />
 
-                        <span
-                            v-else
-                            class="text-5xl font-bold text-white/10"
-                        >
+                        <span v-else class="text-5xl font-bold text-white/10">
                             {{ project.title.charAt(0) }}
                         </span>
                     </div>
@@ -347,29 +363,64 @@ defineProps({
              Contact
         ========================================= -->
         <section id="contact" class="border-t border-white/10 bg-slate-900/50">
-            <div class="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8">
-                <p
-                    class="text-sm font-semibold uppercase tracking-[0.25em] text-red-500"
-                >
-                    Let's Work Together
-                </p>
+            <div class="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+                <div class="text-center">
+                    <p
+                        class="text-sm font-semibold uppercase tracking-[0.25em] text-red-500"
+                    >
+                        Contact
+                    </p>
 
-                <h2 class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
-                    Have a project in mind?
-                </h2>
+                    <h2 class="mt-4 text-4xl font-bold tracking-tight">
+                        Let's connect and build something meaningful.
+                    </h2>
 
-                <p
-                    class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400"
-                >
-                    Let's build something useful, scalable, and beautiful.
-                </p>
+                    <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+                        I'm open to opportunities, collaborations, and projects
+                        involving web development, business systems, and
+                        technology solutions.
+                    </p>
+                </div>
 
-                <a
-                    href="mailto:gbrlmariano9@gmail.com"
-                    class="mt-8 inline-flex rounded-lg bg-red-600 px-7 py-3 font-semibold transition hover:bg-red-500"
-                >
-                    Get In Touch
-                </a>
+                <div class="mt-12 grid gap-6 md:grid-cols-3">
+                    <!-- Email -->
+                    <a
+                        href="mailto:gbrlmariano9@gmail.com"
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-red-500/40"
+                    >
+                        <p class="text-sm text-slate-400">Email</p>
+
+                        <p class="mt-2 font-semibold text-white">
+                            gbrlmariano9@gmail.com
+                        </p>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a
+                        href="https://github.com/gbrlmariano9"
+                        target="_blank"
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-red-500/40"
+                    >
+                        <p class="text-sm text-slate-400">GitHub</p>
+
+                        <p class="mt-2 font-semibold text-white">
+                            github.com/gbrlmariano9
+                        </p>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a
+                        href="https://linkedin.com/in/gbrlmariano"
+                        target="_blank"
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-red-500/40"
+                    >
+                        <p class="text-sm text-slate-400">LinkedIn</p>
+
+                        <p class="mt-2 font-semibold text-white">
+                            linkedin.com/in/gbrlmariano
+                        </p>
+                    </a>
+                </div>
             </div>
         </section>
 

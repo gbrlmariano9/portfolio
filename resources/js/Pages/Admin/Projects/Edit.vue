@@ -34,7 +34,6 @@ const form = useForm({
 const processingImage = ref(null);
 const savedImage = ref(null);
 
-
 const setPrimary = (image) => {
     if (processingImage.value) {
         return;
@@ -90,11 +89,9 @@ const updateImage = (image) => {
             onFinish: () => {
                 processingImage.value = null;
             },
-        }
+        },
     );
 };
-
-
 
 const deleteImage = (image) => {
     if (processingImage.value) {
@@ -479,10 +476,11 @@ const submit = () => {
                             <!-- Alt Text -->
                             <!-- Image Details -->
                             <div class="space-y-4">
-
                                 <!-- Alt Text -->
                                 <div>
-                                    <label class="mb-1 block text-xs font-medium text-gray-600">
+                                    <label
+                                        class="mb-1 block text-xs font-medium text-gray-600"
+                                    >
                                         Alt Text
                                     </label>
 
@@ -497,7 +495,9 @@ const submit = () => {
 
                                 <!-- Sort Order -->
                                 <div>
-                                    <label class="mb-1 block text-xs font-medium text-gray-600">
+                                    <label
+                                        class="mb-1 block text-xs font-medium text-gray-600"
+                                    >
                                         Sort Order
                                     </label>
 
@@ -508,9 +508,8 @@ const submit = () => {
                                         class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-red-500 focus:ring-red-500"
                                     />
                                 </div>
-
                             </div>
-
+                            <br />
                             <!-- Actions -->
                             <div class="flex gap-2">
                                 <!-- Set Primary -->
@@ -536,9 +535,7 @@ const submit = () => {
                                         ✓ Saved
                                     </span>
 
-                                    <span v-else>
-                                        Save
-                                    </span>
+                                    <span v-else> Save </span>
                                 </button>
 
                                 <!-- Delete -->
@@ -549,6 +546,23 @@ const submit = () => {
                                     class="rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     🗑 Delete
+                                </button>
+
+                                <!-- Set Primary -->
+                                <button
+                                    v-if="!image.is_primary"
+                                    type="button"
+                                    @click="setPrimary(image)"
+                                    :disabled="processingImage === image.id"
+                                    class="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                    <span v-if="processingImage === image.id">
+                                        Updating...
+                                    </span>
+
+                                    <span v-else>
+                                        ⭐ Set Primary
+                                    </span>
                                 </button>
                             </div>
                         </div>
