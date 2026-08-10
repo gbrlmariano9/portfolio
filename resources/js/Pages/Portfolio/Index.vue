@@ -28,7 +28,7 @@ defineProps({
                     :href="route('portfolio')"
                     class="text-xl font-bold tracking-tight"
                 >
-                    Gabriel<span class="text-red-500">.</span>
+                    Gab<span class="text-red-500">.</span>
                 </Link>
 
                 <nav
