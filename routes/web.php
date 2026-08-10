@@ -48,8 +48,6 @@ Route::middleware(['auth', 'admin'])
             'projects/{project}/images/{image}',
             [ProjectController::class, 'updateImage']
         )->name('projects.images.update');
-
-
     });
 
 
