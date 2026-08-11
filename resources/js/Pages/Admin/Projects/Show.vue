@@ -102,8 +102,15 @@ const statusClasses = {
                         </div>
 
                         <div>
-                            <div v-if="project.image" class="overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100">
-                                <img :src="`/storage/${project.image}`" :alt="project.title" class="h-[420px] w-full object-cover" />
+                            <div
+                                v-if="project.images?.length"
+                                class="overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100"
+                            >
+                                <img
+                                    :src="`/storage/${project.images[0].image_path}`"
+                                    :alt="project.images[0].alt_text || project.title"
+                                    class="h-[420px] w-full object-cover"
+                                />
                             </div>
                             <div v-else class="flex h-64 items-center justify-center rounded-[28px] border border-dashed border-slate-300 bg-slate-50">
                                 <div class="text-center">
